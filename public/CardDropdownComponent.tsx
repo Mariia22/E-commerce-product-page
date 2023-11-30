@@ -1,5 +1,5 @@
-import React, { FC, useState } from 'react'
-import { ReactComponent as authDropDownArrow } from 'Images/svg/authDropDownArrow.svg'
+import React, { FC, useState } from "react"
+import { ReactComponent as authDropDownArrow } from "Images/svg/authDropDownArrow.svg"
 import {
     Select,
     MenuItem,
@@ -7,15 +7,15 @@ import {
     FormControl,
     InputLabel,
     Typography,
-} from '@mui/material'
-import { Box, useTheme } from '@mui/system'
-import { FormDataType } from './CardTransferForm'
-import { CardDataTypes } from 'Components/MainMenu/constants'
-import { CardHeaderComponent } from './CardHeaderComponent'
+} from "@mui/material"
+import { Box, useTheme } from "@mui/system"
+import { FormDataType } from "./CardTransferForm"
+import { CardDataTypes } from "Components/MainMenu/constants"
+import { CardHeaderComponent } from "./CardHeaderComponent"
 import {
     generateCardInformation,
     generateCardBalanceInformation,
-} from 'Utils/helper'
+} from "Utils/helper"
 
 type CardDropdownProps = {
     name: string
@@ -68,11 +68,11 @@ export const CardDropdownComponent: FC<CardDropdownProps> = ({
                 <InputLabel
                     id="card-select-label"
                     sx={{
-                        m: '0',
+                        m: "0",
                         color: selectedValue
                             ? `${theme.palette.info?.main}`
                             : `${theme.palette.primary?.dark}`,
-                        '&.Mui-focused': {
+                        "&.Mui-focused": {
                             color: selectedValue
                                 ? `${theme.palette.info?.main}`
                                 : `${theme.palette.primary?.dark}`,
@@ -105,30 +105,30 @@ export const CardDropdownComponent: FC<CardDropdownProps> = ({
                     MenuProps={{
                         PaperProps: {
                             sx: {
-                                '& .MuiButtonBase-root.MuiMenuItem-root.Mui-selected':
+                                "& .MuiButtonBase-root.MuiMenuItem-root.Mui-selected":
                                     {
                                         backgroundColor: `${theme.palette.info?.light}`,
                                     },
-                                '& .MuiButtonBase-root.MuiMenuItem-root:hover':
+                                "& .MuiButtonBase-root.MuiMenuItem-root:hover":
                                     {
-                                        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                                        backgroundColor: "rgba(0, 0, 0, 0.1)",
                                     },
                             },
                         },
                     }}
                     onChange={handleChange}
                     sx={{
-                        width: '347px',
-                        height: '48px',
-                        boxShadow: 'none',
-                        m: '8px 0',
+                        width: "347px",
+                        height: "48px",
+                        boxShadow: "none",
+                        m: "8px 0",
                         backgroundColor: `${theme.palette.info?.main}`,
-                        '.MuiOutlinedInput-notchedOutline': {
+                        ".MuiOutlinedInput-notchedOutline": {
                             border: `1px solid ${theme.palette.primary?.light}`,
-                            borderRadius: '0',
+                            borderRadius: "0",
                         },
-                        '& .MuiSelect-select': { padding: '12px' },
-                        '& .MuiSelect-icon': { right: '13px' },
+                        "& .MuiSelect-select": { padding: "12px" },
+                        "& .MuiSelect-icon": { right: "13px" },
                     }}
                 >
                     {cards.length > 0 ? (
@@ -147,7 +147,7 @@ export const CardDropdownComponent: FC<CardDropdownProps> = ({
                                     <Typography
                                         component="span"
                                         sx={{
-                                            fontSize: '1rem',
+                                            fontSize: "1rem",
                                             color: `${theme.palette.primary?.light}`,
                                         }}
                                     >
@@ -167,7 +167,7 @@ export const CardDropdownComponent: FC<CardDropdownProps> = ({
                 {serverError.length > 0 ? (
                     <Typography
                         sx={{
-                            lineHeight: '1.25rem',
+                            lineHeight: "1.25rem",
                             color: `${theme.palette.warning.main}`,
                         }}
                     >
@@ -177,7 +177,7 @@ export const CardDropdownComponent: FC<CardDropdownProps> = ({
                     !selectedValue && (
                         <Typography
                             sx={{
-                                lineHeight: '1.25rem',
+                                lineHeight: "1.25rem",
                                 color: `${theme.palette.primary?.light}`,
                             }}
                         >

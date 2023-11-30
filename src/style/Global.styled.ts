@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
-import font from './../assets/fonts/KumbhSans-VariableFont_YOPQ,wght.ttf'
+import { createGlobalStyle } from "styled-components"
+import font from "./../assets/fonts/KumbhSans-VariableFont_YOPQ,wght.ttf"
 
 export const GlobalStyles = createGlobalStyle`
 *,
