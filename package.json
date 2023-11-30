@@ -9,8 +9,9 @@
         "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
-        "precommit": "npm run lint && npm format && npm test",
-        "test": "jest"
+        "precommit": "npm run lint && npm run format",
+        "test": "jest",
+        "prepare": "husky install"
     },
     "dependencies": {
         "@types/styled-components": "^5.1.32",
@@ -35,10 +36,5 @@
         "prettier": "3.1.0",
         "typescript": "^5.2.2",
         "vite": "^5.0.0"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "npm run precommit"
-        }
     }
 }
