@@ -4,4 +4,5 @@ export type FlexProps = {
     align?: string
     justify?: string
     margin?: string
+    width?: string
 }

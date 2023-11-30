@@ -1,10 +1,11 @@
 import React from "react"
-import { Flex } from "./components/common/Flex/Flex"
+import { Header } from "./components/Header/Header"
+import { Wrapper } from "./components/common/Wrapper/Wrapper"
 
 export const App: React.FC = () => {
-    return (
-        <Flex direction="column" align="center" margin="20px 0 0 0">
-            <p>vjkjfhvjk</p>
-        </Flex>
-    )
+  return (
+    <Wrapper direction="column" align="center" margin="20px 0 0 0">
+      <Header />
+    </Wrapper>
+  )
 }

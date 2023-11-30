@@ -26,5 +26,4 @@ body {
   line-height: 1.66;
   font-size: 15px;
   overflow-x: hidden;
-}
-`
+}`
