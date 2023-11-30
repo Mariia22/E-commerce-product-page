@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import font from "./../assets/fonts/KumbhSans-VariableFont_YOPQ,wght.ttf";
+import { createGlobalStyle } from 'styled-components'
+import font from './../assets/fonts/KumbhSans-VariableFont_YOPQ,wght.ttf'
 
 export const GlobalStyles = createGlobalStyle`
 *,
@@ -19,6 +19,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
 body {
+  margin: 20px 0 88px 0;
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.font};
   font-family: "Kumbh Sans";
@@ -26,4 +27,4 @@ body {
   font-size: 15px;
   overflow-x: hidden;
 }
-`;
+`
