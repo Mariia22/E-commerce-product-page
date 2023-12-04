@@ -1,17 +1,27 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
+import { theme } from "../../../style/Theme.styled"
 
 type ContainerProps = {
-    width: number
-    height: number
+    width: string
+    height: string
     background: string
     margin?: string
+    $borderradius?: string
+    $active?: number
 }
 
 export const ContainerStyled = styled.div<ContainerProps>`
-    width: ${({ width }) => width + "px"};
-    height: ${({ height }) => height + "px"};
+    width: ${({ width }) => width};
+    height: ${({ height }) => height};
     margin: ${({ margin }) => margin || "0"};
     background-image: url(${({ background }) => background});
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: ${({ $borderradius }) => $borderradius || "0%"};
+
+    ${(props) =>
+        props.$active &&
+        css`
+            border: 2px solid ${theme.colors.secondary};
+        `}
 `
