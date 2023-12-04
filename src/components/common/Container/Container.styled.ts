@@ -3,7 +3,7 @@ import styled from "styled-components"
 type ContainerProps = {
     width: number
     height: number
-    background?: string
+    background: string
     margin?: string
 }
 

@@ -19,11 +19,27 @@ export const GlobalStyles = createGlobalStyle`
     }
 
 body {
-  margin: 20px 0 88px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.font};
   font-family: "Kumbh Sans";
   line-height: 1.66;
   font-size: 15px;
-  overflow-x: hidden;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    max-width: 1100px;
+    min-width: 375px;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    @media ${(props) => props.theme.media.phone} {
+        max-width: 100%;
+        margin-top: 28px;
+    }
 }`
