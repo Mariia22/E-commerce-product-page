@@ -5,6 +5,7 @@ import { Nav } from "./Nav/Nav"
 import CartIcon from "../../assets/icons/icon-cart.svg"
 import LogoIcon from "../../assets/icons/logo.svg"
 import styled from "styled-components"
+import { theme } from "../../style/Theme.styled"
 
 const HeaderStyle = styled.div`
     display: flex;
@@ -21,6 +22,9 @@ const LogoIconStyled = styled(LogoIcon)`
 `
 
 const CartIconStyled = styled(CartIcon)`
+    fill: ${theme.colors.font};
+    width: 22px;
+    height: 20px;
     &:hover {
         cursor: pointer;
     }

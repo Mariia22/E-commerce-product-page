@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import { theme } from "../../../style/Theme.styled"
 
 type ContainerProps = {
@@ -24,10 +24,4 @@ export const ContainerStyled = styled.div<ContainerProps>`
         border: 2px solid ${theme.colors.secondary};
         cursor: pointer;
     }
-
-    ${(props) =>
-        props.$active &&
-        css`
-            border: 2px solid ${theme.colors.secondary};
-        `}
 `

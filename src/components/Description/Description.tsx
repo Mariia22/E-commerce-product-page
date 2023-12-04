@@ -5,6 +5,7 @@ import { Counter } from "../Counter/Counter"
 import styled from "styled-components"
 import { theme } from "../../style/Theme.styled"
 import { ProductDescriptionType } from "../../utils/types"
+import CartIcon from "../../assets/icons/icon-shape.svg"
 
 const CompanyTitleStyled = styled.h2`
     font-size: 0.81rem;
@@ -48,6 +49,13 @@ const PrevPriceStyled = styled.p`
     text-decoration: line-through;
     color: ${theme.colors.paleFont};
 `
+const CartIconStyled = styled(CartIcon)`
+    fill: white;
+    text-align: center;
+    margin-right: 3px;
+    width: 17.5px;
+    height: 16px;
+`
 
 export const Description: React.FC<ProductDescriptionType> = ({
     company,
@@ -67,9 +75,12 @@ export const Description: React.FC<ProductDescriptionType> = ({
                 <DiscountStyled>{discount}</DiscountStyled>
             </Flex>
             <PrevPriceStyled>{prevPrice}</PrevPriceStyled>
-            <Flex>
+            <Flex align="flex-end" justify="space-between">
                 <Counter />
-                <Button />
+                <Button width="272px" height="56px">
+                    <CartIconStyled />
+                    Add to cart
+                </Button>
             </Flex>
         </Flex>
     )

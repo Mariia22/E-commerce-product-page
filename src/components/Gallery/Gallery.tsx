@@ -1,28 +1,55 @@
 import React, { useState } from "react"
 import { Flex } from "../common/Flex/Flex"
-import { ContainerStyled } from "../common/Container/Container.styled"
 import { ProductImagesType } from "../../utils/types"
+import styled, { css } from "styled-components"
+import { theme } from "../../style/Theme.styled"
 
 export const Gallery: React.FC<ProductImagesType> = ({ images }) => {
     const [currentIndex] = useState(0)
 
+    type PhotoProps = {
+        background: string
+        $active?: number
+    }
+
+    const MainPhotoStyled = styled.div<PhotoProps>`
+        width: 445px;
+        height: 445px;
+        margin: 0 0 32px;
+        background-image: url(${({ background }) => background});
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 15px;
+    `
+
+    const ThumbnailPhotoStyled = styled.div<PhotoProps>`
+        width: 88px;
+        height: 88px;
+        background: url(${({ background }) => background});
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 10px;
+
+        &:hover {
+            opacity: 0.5;
+        }
+
+        ${(props) =>
+            props.$active &&
+            css`
+                border: 2px solid ${theme.colors.secondary};
+                opacity: 0.5;
+            `}
+    `
+
     return (
         <Flex direction="column" margin="0 48px">
-            <ContainerStyled
-                width="445px"
-                height="445px"
-                background={images[currentIndex].image}
-                $borderradius="15px"
-                margin="0 0 32px"
-            />
+            <MainPhotoStyled background={images[currentIndex].image} />
             <Flex justify="space-between">
                 {images.map((image, idx) => (
-                    <ContainerStyled
+                    <ThumbnailPhotoStyled
                         key={image.id}
-                        width="88px"
-                        height="88px"
                         background={image.thumbnail}
-                        $borderradius="10px"
                         $active={+(currentIndex === idx)}
                     />
                 ))}
