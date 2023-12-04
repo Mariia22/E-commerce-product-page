@@ -22,6 +22,7 @@ export const ContainerStyled = styled.div<ContainerProps>`
 
     &:hover {
         border: 2px solid ${theme.colors.secondary};
+        cursor: pointer;
     }
 
     ${(props) =>

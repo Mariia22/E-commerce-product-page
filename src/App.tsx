@@ -11,7 +11,7 @@ export const App: React.FC = () => {
     return (
         <>
             <Header />
-            <Flex margin="90px 0 0 0">
+            <Flex margin="50px 0 0 0">
                 <Gallery images={currentPage.images} />
                 <Description
                     company={currentPage.company}

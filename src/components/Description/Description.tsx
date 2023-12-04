@@ -58,7 +58,7 @@ export const Description: React.FC<ProductDescriptionType> = ({
     prevPrice,
 }) => {
     return (
-        <Flex direction="column" margin="62px 47px 0px 77px">
+        <Flex direction="column" margin="12px 47px 0px 77px">
             <CompanyTitleStyled>{company}</CompanyTitleStyled>
             <TitleStyled>{title}</TitleStyled>
             <DescriptionStyled>{description}</DescriptionStyled>

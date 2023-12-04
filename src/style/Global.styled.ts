@@ -32,7 +32,7 @@ body {
 #root {
     display: flex;
     flex-direction: column;
-    margin: 20px 0 132px 0;
+    margin-top: 20px;
     max-width: 1100px;
     min-width: 375px;
     min-height: 100vh;
