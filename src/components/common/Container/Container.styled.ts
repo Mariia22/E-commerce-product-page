@@ -18,6 +18,11 @@ export const ContainerStyled = styled.div<ContainerProps>`
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: ${({ $borderradius }) => $borderradius || "0%"};
+    border: 2px solid transparent;
+
+    &:hover {
+        border: 2px solid ${theme.colors.secondary};
+    }
 
     ${(props) =>
         props.$active &&

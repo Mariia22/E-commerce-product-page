@@ -11,7 +11,7 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 @font-face {
-        font-family: 'Kumbh Sans';
+        font-family:'Kumbh Sans';
         src: local('Kumbh Sans'), local('Kumbh Sans'),
         url(${font}) format('ttf'),
         font-weight: 300;
@@ -26,7 +26,7 @@ body {
   color: ${({ theme }) => theme.colors.font};
   font-family: "Kumbh Sans";
   line-height: 1.66;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 #root {

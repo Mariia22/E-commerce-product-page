@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { Flex } from "../common/Flex/Flex"
 import { ContainerStyled } from "../common/Container/Container.styled"
-import { images } from "../../utils/constants"
+import { ProductImagesType } from "../../utils/types"
 
-export const Gallery: React.FC = () => {
+export const Gallery: React.FC<ProductImagesType> = ({ images }) => {
     const [currentIndex] = useState(0)
 
     return (

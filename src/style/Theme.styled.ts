@@ -6,6 +6,7 @@ export const theme = {
         title: "#1D2026",
         palePrimary: "#F6F8FD",
         paleSecondary: "#FFEEE2",
+        paleFont: "#B6BCC8",
         borderColor: "#E4E9F2",
     },
     media: {
