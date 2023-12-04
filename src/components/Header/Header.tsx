@@ -15,14 +15,14 @@ const HeaderStyle = styled.div`
 `
 
 export const Header: React.FC = () => {
-  return (
-    <HeaderStyle>
-      <Logo />
-      <Nav />
-      <Flex align="center" width="15%" justify="space-around">
-        <BasketIcon />
-        <User />
-      </Flex>
-    </HeaderStyle>
-  )
+    return (
+        <HeaderStyle>
+            <Logo />
+            <Nav />
+            <Flex align="center" width="15%" justify="space-around">
+                <BasketIcon />
+                <User />
+            </Flex>
+        </HeaderStyle>
+    )
 }
