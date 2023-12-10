@@ -4,10 +4,10 @@ import { theme } from "../../../style/Theme.styled"
 
 const ButtonStyled = styled.button<ButtonType>`
     font-family: "Kumbh Sans";
-    font-size: 1rem;
-    font-style: normal;
     font-weight: 700;
     line-height: normal;
+    font-size: 1rem;
+    font-style: normal;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,16 +21,16 @@ const ButtonStyled = styled.button<ButtonType>`
 `
 
 type ButtonType = {
-    width: string
-    height: string
-    children?: React.ReactNode
+  width: string
+  height: string
+  children?: React.ReactNode
 }
 
 export const Button: React.FC<ButtonType> = ({ width, height, children }) => {
-    return (
-        <ButtonStyled width={width} height={height}>
-            {" "}
-            {children}
-        </ButtonStyled>
-    )
+  return (
+    <ButtonStyled width={width} height={height}>
+      {" "}
+      {children}
+    </ButtonStyled>
+  )
 }
