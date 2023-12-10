@@ -77,7 +77,7 @@ export const Description: React.FC<ProductDescriptionType> = ({
             <PrevPriceStyled>{prevPrice}</PrevPriceStyled>
             <Flex align="flex-end" justify="space-between">
                 <Counter />
-                <Button width="272px" height="56px">
+                <Button width="272px" height="56px" isShadow={true}>
                     <CartIconStyled />
                     Add to cart
                 </Button>

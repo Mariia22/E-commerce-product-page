@@ -17,18 +17,25 @@ const ButtonStyled = styled.button<ButtonType>`
     background-color: ${theme.colors.secondary};
     color: ${theme.colors.primary};
     border-radius: 10px;
-    box-shadow: 0px 20px 50px -20px ${theme.colors.secondary};
+    box-shadow: ${({ isShadow }) =>
+        isShadow ? `0px 20px 50px -20px ${theme.colors.secondary}` : `none`};
 `
 
 type ButtonType = {
     width: string
     height: string
     children?: React.ReactNode
+    isShadow?: boolean
 }
 
-export const Button: React.FC<ButtonType> = ({ width, height, children }) => {
+export const Button: React.FC<ButtonType> = ({
+    width,
+    height,
+    children,
+    isShadow,
+}) => {
     return (
-        <ButtonStyled width={width} height={height}>
+        <ButtonStyled width={width} height={height} isShadow={isShadow}>
             {" "}
             {children}
         </ButtonStyled>
