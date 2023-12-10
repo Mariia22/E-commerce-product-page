@@ -34,36 +34,44 @@ const CartIconStyled = styled(CartIcon)`
 `
 
 export const Header: React.FC = () => {
-  const [coords, setCoords] = useState<BasketProps>({ left: 0, top: 0 })
-  const [isCartOn, setCartOn] = useState(false);
+    const [coords, setCoords] = useState<BasketProps>({ left: 0, top: 0 })
+    const [isCartOn, setCartOn] = useState(false)
 
+    const handleMouseEnter = (e: MouseEvent<HTMLElement>): void => {
+        const element = e.target as HTMLElement
+        console.log(element)
+        const rect = element.getBoundingClientRect()
+        setCoords({
+            left: rect.x + rect.width / 2,
+            top: rect.y + window.scrollY + 50,
+        })
+        setCartOn(true)
+    }
 
-  const handleMouseEnter = (e: MouseEvent<HTMLElement>): void => {
-    const element = e.target as HTMLElement
-    console.log(element)
-    const rect = element.getBoundingClientRect();
-    setCoords({
-      left: rect.x + rect.width / 2,
-      top: rect.y + window.scrollY + 50
-    });
-    setCartOn(true)
-  }
+    const handleMouseLeave = () => {
+        setCartOn(false)
+    }
 
-  const handleMouseLeave = () => {
-    setCartOn(false)
-  }
-
-  return (
-    <HeaderStyle>
-      <LogoIconStyled />
-      <Nav />
-      <Flex align="center" width="15%" justify="space-around">
-        <BasketWrapper handleMouseEnter={(e: MouseEvent<HTMLElement>) => handleMouseEnter(e)} handleMouseLeave={handleMouseLeave}>
-          <CartIconStyled />
-        </BasketWrapper>
-        <User />
-      </Flex>
-      {isCartOn && <Portal><Basket left={coords.left} top={coords.top} /></Portal>}
-    </HeaderStyle>
-  )
+    return (
+        <HeaderStyle>
+            <LogoIconStyled />
+            <Nav />
+            <Flex align="center" width="15%" justify="space-around">
+                <BasketWrapper
+                    handleMouseEnter={(e: MouseEvent<HTMLElement>) =>
+                        handleMouseEnter(e)
+                    }
+                    handleMouseLeave={handleMouseLeave}
+                >
+                    <CartIconStyled />
+                </BasketWrapper>
+                <User />
+            </Flex>
+            {isCartOn && (
+                <Portal>
+                    <Basket left={coords.left} top={coords.top} />
+                </Portal>
+            )}
+        </HeaderStyle>
+    )
 }

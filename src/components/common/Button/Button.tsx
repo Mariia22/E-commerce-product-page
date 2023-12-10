@@ -21,16 +21,16 @@ const ButtonStyled = styled.button<ButtonType>`
 `
 
 type ButtonType = {
-  width: string
-  height: string
-  children?: React.ReactNode
+    width: string
+    height: string
+    children?: React.ReactNode
 }
 
 export const Button: React.FC<ButtonType> = ({ width, height, children }) => {
-  return (
-    <ButtonStyled width={width} height={height}>
-      {" "}
-      {children}
-    </ButtonStyled>
-  )
+    return (
+        <ButtonStyled width={width} height={height}>
+            {" "}
+            {children}
+        </ButtonStyled>
+    )
 }
