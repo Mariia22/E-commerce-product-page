@@ -8,6 +8,7 @@ export const theme = {
         paleSecondary: "#FFEEE2",
         paleFont: "#B6BCC8",
         borderColor: "#E4E9F2",
+        iconDeleteColor: "#C3CAD9",
         shadowColor: "rgba(29, 32, 38, 0.50)",
     },
     media: {

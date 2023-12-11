@@ -39,7 +39,6 @@ export const Header: React.FC = () => {
 
     const handleMouseEnter = (e: MouseEvent<HTMLElement>): void => {
         const element = e.target as HTMLElement
-        console.log(element)
         const rect = element.getBoundingClientRect()
         setCoords({
             left: rect.x + rect.width / 2,

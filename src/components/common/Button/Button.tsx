@@ -19,6 +19,10 @@ const ButtonStyled = styled.button<ButtonType>`
     border-radius: 10px;
     box-shadow: ${({ isShadow }) =>
         isShadow ? `0px 20px 50px -20px ${theme.colors.secondary}` : `none`};
+
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 type ButtonType = {

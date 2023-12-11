@@ -4,6 +4,7 @@ import { theme } from "../../style/Theme.styled"
 import { Flex } from "../common/Flex/Flex"
 import { Button } from "../common/Button/Button"
 import { BasketItem } from "./BasketItem"
+import image from "../../assets/images/image-product-1-thumbnail.jpg"
 
 export interface BasketProps {
     left: number
@@ -42,29 +43,41 @@ const BaskedText = styled.p`
 export const Basket: React.FC<BasketProps> = ({ left, top }) => {
     const [isEmptyCart] = useState(false)
     const goods = [
-        { id: 1, name: "Fall Limited Edition Sneakers", price: 125, number: 3 },
+        {
+            id: 1,
+            name: "Fall Limited Edition Sneakers",
+            price: 125.0,
+            number: 3,
+            image: image,
+        },
     ]
 
     return (
         <BasketStyled left={left} top={top}>
             <BaskedTitle>Cart</BaskedTitle>
-            <Flex direction="column" align="center" justify="center">
+            <Flex
+                direction="column"
+                align="center"
+                justify="center"
+                margin="24px 0 0 0"
+            >
                 {isEmptyCart ? (
                     <BaskedText>Your cart is empty.</BaskedText>
                 ) : (
-                    <>
+                    <Flex direction="column" width="100%" align="center">
                         {goods.map((item) => (
                             <BasketItem
                                 key={item.id}
                                 name={item.name}
                                 price={item.price}
                                 number={item.number}
+                                image={item.image}
                             />
                         ))}
                         <Button width="312px" height="56px">
                             Checkout
                         </Button>
-                    </>
+                    </Flex>
                 )}
             </Flex>
         </BasketStyled>
