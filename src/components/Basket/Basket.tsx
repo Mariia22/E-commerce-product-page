@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { MouseEvent, useState } from "react"
 import styled from "styled-components"
 import { theme } from "../../style/Theme.styled"
 import { Flex } from "../common/Flex/Flex"
@@ -9,9 +9,11 @@ import image from "../../assets/images/image-product-1-thumbnail.jpg"
 export interface BasketProps {
     left: number
     top: number
+    handleMouseEnter: (e: MouseEvent<HTMLElement>) => void
+    handleMouseLeave: () => void
 }
 
-const BasketStyled = styled.div<BasketProps>`
+const BasketStyled = styled.div<Partial<BasketProps>>`
     position: absolute;
     left: ${({ left }) => left || 0}px;
     top: ${({ top }) => top || 0}px;
@@ -19,9 +21,10 @@ const BasketStyled = styled.div<BasketProps>`
     display: flex;
     flex-direction: column;
     min-width: 360px;
-    min-height: 256px;
-    border-radius: 10px;
-    background: ${theme.colors.primary};
+    min-height: 286px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background: transparent;
     box-shadow: 0px 20px 50px -20px ${theme.colors.shadowColor};
 `
 
@@ -32,15 +35,36 @@ const BaskedTitle = styled.div`
     border-bottom: 1px solid ${theme.colors.borderColor};
     margin-top: 24px;
     text-indent: 24px;
+    background: ${theme.colors.primary};
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 `
 
 const BaskedText = styled.p`
     font-weight: 700;
     margin: 77px;
     color: ${theme.colors.font};
+    background: ${theme.colors.primary};
 `
 
-export const Basket: React.FC<BasketProps> = ({ left, top }) => {
+const BaskedMainLine = styled.div`
+    height: 30px;
+`
+
+const BaskedDescription = styled.div`
+    width: 100%;
+    display: "flex";
+    flex-direction: "column";
+    align-items: "center";
+    background: ${theme.colors.primary};
+`
+
+export const Basket: React.FC<BasketProps> = ({
+    left,
+    top,
+    handleMouseEnter,
+    handleMouseLeave,
+}) => {
     const [isEmptyCart] = useState(false)
     const goods = [
         {
@@ -53,7 +77,13 @@ export const Basket: React.FC<BasketProps> = ({ left, top }) => {
     ]
 
     return (
-        <BasketStyled left={left} top={top}>
+        <BasketStyled
+            left={left}
+            top={top}
+            onMouseEnter={(e: MouseEvent<HTMLElement>) => handleMouseEnter(e)}
+            onMouseLeave={handleMouseLeave}
+        >
+            <BaskedMainLine />
             <BaskedTitle>Cart</BaskedTitle>
             <Flex
                 direction="column"
@@ -64,7 +94,7 @@ export const Basket: React.FC<BasketProps> = ({ left, top }) => {
                 {isEmptyCart ? (
                     <BaskedText>Your cart is empty.</BaskedText>
                 ) : (
-                    <Flex direction="column" width="100%" align="center">
+                    <BaskedDescription>
                         {goods.map((item) => (
                             <BasketItem
                                 key={item.id}
@@ -77,7 +107,7 @@ export const Basket: React.FC<BasketProps> = ({ left, top }) => {
                         <Button width="312px" height="56px">
                             Checkout
                         </Button>
-                    </Flex>
+                    </BaskedDescription>
                 )}
             </Flex>
         </BasketStyled>

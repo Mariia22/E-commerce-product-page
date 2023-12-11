@@ -28,21 +28,26 @@ const CartIconStyled = styled(CartIcon)`
     fill: ${theme.colors.font};
     width: 22px;
     height: 20px;
+
     &:hover {
         cursor: pointer;
     }
 `
 
 export const Header: React.FC = () => {
-    const [coords, setCoords] = useState<BasketProps>({ left: 0, top: 0 })
+    const [coords, setCoords] = useState<Pick<BasketProps, "top" | "left">>({
+        left: 0,
+        top: 0,
+    })
     const [isCartOn, setCartOn] = useState(false)
 
     const handleMouseEnter = (e: MouseEvent<HTMLElement>): void => {
         const element = e.target as HTMLElement
         const rect = element.getBoundingClientRect()
+        console.log(rect)
         setCoords({
             left: rect.x + rect.width / 2,
-            top: rect.y + window.scrollY + 50,
+            top: rect.y + 20,
         })
         setCartOn(true)
     }
@@ -68,7 +73,12 @@ export const Header: React.FC = () => {
             </Flex>
             {isCartOn && (
                 <Portal>
-                    <Basket left={coords.left} top={coords.top} />
+                    <Basket
+                        left={coords.left}
+                        top={coords.top}
+                        handleMouseEnter={() => setCartOn(true)}
+                        handleMouseLeave={handleMouseLeave}
+                    />
                 </Portal>
             )}
         </HeaderStyle>
