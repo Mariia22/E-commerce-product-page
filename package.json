@@ -14,9 +14,12 @@
         "prepare": "husky install"
     },
     "dependencies": {
+        "@reduxjs/toolkit": "^2.0.1",
+        "@types/react-redux": "^7.1.33",
         "@types/styled-components": "^5.1.32",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-redux": "^9.0.4",
         "styled-components": "^6.1.1",
         "vite-plugin-svgr": "^4.2.0"
     },

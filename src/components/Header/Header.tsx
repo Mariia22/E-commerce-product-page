@@ -7,8 +7,8 @@ import LogoIcon from "../../assets/icons/logo.svg"
 import styled from "styled-components"
 import { theme } from "../../style/Theme.styled"
 import { Portal } from "../Portal/Portal"
-import { Basket, BasketProps } from "../Basket/Basket"
-import { BasketWrapper } from "../Basket/BasketWrapper"
+import { Cart, CartProps } from "../Cart/Cart"
+import { CartWrapper } from "../Cart/CartWrapper"
 
 const HeaderStyle = styled.div`
     display: flex;
@@ -35,61 +35,61 @@ const CartIconStyled = styled(CartIcon)`
 `
 
 export const Header: React.FC = () => {
-    const [coords, setCoords] = useState<Pick<BasketProps, "top" | "left">>({
-        left: 0,
-        top: 0,
+  const [coords, setCoords] = useState<Pick<CartProps, "top" | "left">>({
+    left: 0,
+    top: 0,
+  })
+  const [isCartOn, setCartOn] = useState(false)
+  const [delayHandler, setDelayHandler] = useState(0)
+
+  const handleMouseEnter = (e: MouseEvent<HTMLElement>): void => {
+    const element = e.target as HTMLElement
+    const rect = element.getBoundingClientRect()
+    setCoords({
+      left: rect.x + rect.width / 2,
+      top: rect.y + scrollY + 50,
     })
-    const [isCartOn, setCartOn] = useState(false)
-    const [delayHandler, setDelayHandler] = useState(0)
+    stopTimerAndOpenCart()
+  }
 
-    const handleMouseEnter = (e: MouseEvent<HTMLElement>): void => {
-        const element = e.target as HTMLElement
-        const rect = element.getBoundingClientRect()
-        setCoords({
-            left: rect.x + rect.width / 2,
-            top: rect.y + scrollY + 50,
-        })
-        stopTimerAndOpenCart()
-    }
-
-    const handleMouseLeave = () => {
-        setDelayHandler(
-            window.setTimeout(() => {
-                setCartOn(false)
-            }, 500)
-        )
-    }
-
-    const stopTimerAndOpenCart = () => {
-        clearTimeout(delayHandler)
-        setCartOn(true)
-    }
-
-    return (
-        <HeaderStyle>
-            <LogoIconStyled />
-            <Nav />
-            <Flex align="center" width="15%" justify="space-around">
-                <BasketWrapper
-                    handleMouseEnter={(e: MouseEvent<HTMLElement>) =>
-                        handleMouseEnter(e)
-                    }
-                    handleMouseLeave={handleMouseLeave}
-                >
-                    <CartIconStyled />
-                </BasketWrapper>
-                <User />
-            </Flex>
-            {isCartOn && (
-                <Portal>
-                    <Basket
-                        left={coords.left}
-                        top={coords.top}
-                        handleMouseEnter={stopTimerAndOpenCart}
-                        handleMouseLeave={handleMouseLeave}
-                    />
-                </Portal>
-            )}
-        </HeaderStyle>
+  const handleMouseLeave = () => {
+    setDelayHandler(
+      window.setTimeout(() => {
+        setCartOn(false)
+      }, 500)
     )
+  }
+
+  const stopTimerAndOpenCart = () => {
+    clearTimeout(delayHandler)
+    setCartOn(true)
+  }
+
+  return (
+    <HeaderStyle>
+      <LogoIconStyled />
+      <Nav />
+      <Flex align="center" width="15%" justify="space-around">
+        <CartWrapper
+          handleMouseEnter={(e: MouseEvent<HTMLElement>) =>
+            handleMouseEnter(e)
+          }
+          handleMouseLeave={handleMouseLeave}
+        >
+          <CartIconStyled />
+        </CartWrapper>
+        <User />
+      </Flex>
+      {isCartOn && (
+        <Portal>
+          <Cart
+            left={coords.left}
+            top={coords.top}
+            handleMouseEnter={stopTimerAndOpenCart}
+            handleMouseLeave={handleMouseLeave}
+          />
+        </Portal>
+      )}
+    </HeaderStyle>
+  )
 }

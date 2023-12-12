@@ -2,14 +2,14 @@ import React, { MouseEvent, ReactNode } from "react"
 import styled from "styled-components"
 import { theme } from "../../style/Theme.styled"
 
-interface BasketWrapperProps {
-    handleMouseEnter: (e: MouseEvent<HTMLElement>) => void
-    handleMouseLeave: () => void
-    children: ReactNode
-    sumInCart?: number
+interface CartWrapperProps {
+  handleMouseEnter: (e: MouseEvent<HTMLElement>) => void
+  handleMouseLeave: () => void
+  children: ReactNode
+  sumInCart?: number
 }
 
-export const BasketWrapperStyled = styled.div<Partial<BasketWrapperProps>>`
+export const CartWrapperStyled = styled.div<Partial<CartWrapperProps>>`
     position: relative;
     &::after {
         content: "${({ sumInCart }) => (sumInCart ? sumInCart : "3")}";
@@ -28,19 +28,19 @@ export const BasketWrapperStyled = styled.div<Partial<BasketWrapperProps>>`
     }
 `
 
-export const BasketWrapper: React.FC<BasketWrapperProps> = ({
-    children,
-    handleMouseEnter,
-    handleMouseLeave,
-    sumInCart,
+export const CartWrapper: React.FC<CartWrapperProps> = ({
+  children,
+  handleMouseEnter,
+  handleMouseLeave,
+  sumInCart,
 }) => {
-    return (
-        <BasketWrapperStyled
-            onMouseEnter={(e: MouseEvent<HTMLElement>) => handleMouseEnter(e)}
-            onMouseLeave={handleMouseLeave}
-            sumInCart={sumInCart}
-        >
-            {children}
-        </BasketWrapperStyled>
-    )
+  return (
+    <CartWrapperStyled
+      onMouseEnter={(e: MouseEvent<HTMLElement>) => handleMouseEnter(e)}
+      onMouseLeave={handleMouseLeave}
+      sumInCart={sumInCart}
+    >
+      {children}
+    </CartWrapperStyled>
+  )
 }
