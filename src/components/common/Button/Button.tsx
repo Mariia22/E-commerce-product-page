@@ -2,6 +2,13 @@ import React from "react"
 import styled from "styled-components"
 import { theme } from "../../../style/Theme.styled"
 
+type ButtonType = {
+    width: string
+    height: string
+    children?: React.ReactNode
+    $isshadow?: boolean
+}
+
 const ButtonStyled = styled.button<ButtonType>`
     font-family: "Kumbh Sans";
     font-weight: 700;
@@ -17,29 +24,22 @@ const ButtonStyled = styled.button<ButtonType>`
     background-color: ${theme.colors.secondary};
     color: ${theme.colors.primary};
     border-radius: 10px;
-    box-shadow: ${({ isShadow }) =>
-        isShadow ? `0px 20px 50px -20px ${theme.colors.secondary}` : `none`};
+    box-shadow: ${({ $isshadow }) =>
+        $isshadow ? `0px 20px 50px -20px ${theme.colors.secondary}` : `none`};
 
     &:hover {
         cursor: pointer;
     }
 `
 
-type ButtonType = {
-    width: string
-    height: string
-    children?: React.ReactNode
-    isShadow?: boolean
-}
-
 export const Button: React.FC<ButtonType> = ({
     width,
     height,
     children,
-    isShadow,
+    $isshadow,
 }) => {
     return (
-        <ButtonStyled width={width} height={height} isShadow={isShadow}>
+        <ButtonStyled width={width} height={height} $isshadow={$isshadow}>
             {" "}
             {children}
         </ButtonStyled>

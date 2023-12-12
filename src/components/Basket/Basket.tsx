@@ -21,10 +21,9 @@ const BasketStyled = styled.div<Partial<BasketProps>>`
     display: flex;
     flex-direction: column;
     min-width: 360px;
-    min-height: 286px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background: transparent;
+    min-height: 236px;
+    border-radius: 10px;
+    background: ${theme.colors.primary};
     box-shadow: 0px 20px 50px -20px ${theme.colors.shadowColor};
 `
 
@@ -35,20 +34,11 @@ const BaskedTitle = styled.div`
     border-bottom: 1px solid ${theme.colors.borderColor};
     margin-top: 24px;
     text-indent: 24px;
-    background: ${theme.colors.primary};
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
 `
 
 const BaskedText = styled.p`
     font-weight: 700;
-    margin: 77px;
     color: ${theme.colors.font};
-    background: ${theme.colors.primary};
-`
-
-const BaskedMainLine = styled.div`
-    height: 30px;
 `
 
 const BaskedDescription = styled.div`
@@ -56,7 +46,6 @@ const BaskedDescription = styled.div`
     display: "flex";
     flex-direction: "column";
     align-items: "center";
-    background: ${theme.colors.primary};
 `
 
 export const Basket: React.FC<BasketProps> = ({
@@ -83,7 +72,6 @@ export const Basket: React.FC<BasketProps> = ({
             onMouseEnter={(e: MouseEvent<HTMLElement>) => handleMouseEnter(e)}
             onMouseLeave={handleMouseLeave}
         >
-            <BaskedMainLine />
             <BaskedTitle>Cart</BaskedTitle>
             <Flex
                 direction="column"

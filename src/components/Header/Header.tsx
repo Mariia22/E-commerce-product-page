@@ -40,20 +40,29 @@ export const Header: React.FC = () => {
         top: 0,
     })
     const [isCartOn, setCartOn] = useState(false)
+    const [delayHandler, setDelayHandler] = useState(0)
 
     const handleMouseEnter = (e: MouseEvent<HTMLElement>): void => {
         const element = e.target as HTMLElement
         const rect = element.getBoundingClientRect()
-        console.log(rect)
         setCoords({
             left: rect.x + rect.width / 2,
-            top: rect.y + 20,
+            top: rect.y + scrollY + 50,
         })
-        setCartOn(true)
+        stopTimerAndOpenCart()
     }
 
     const handleMouseLeave = () => {
-        setCartOn(false)
+        setDelayHandler(
+            window.setTimeout(() => {
+                setCartOn(false)
+            }, 500)
+        )
+    }
+
+    const stopTimerAndOpenCart = () => {
+        clearTimeout(delayHandler)
+        setCartOn(true)
     }
 
     return (
@@ -76,7 +85,7 @@ export const Header: React.FC = () => {
                     <Basket
                         left={coords.left}
                         top={coords.top}
-                        handleMouseEnter={() => setCartOn(true)}
+                        handleMouseEnter={stopTimerAndOpenCart}
                         handleMouseLeave={handleMouseLeave}
                     />
                 </Portal>

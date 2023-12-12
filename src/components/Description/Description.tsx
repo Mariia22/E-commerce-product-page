@@ -49,6 +49,7 @@ const PrevPriceStyled = styled.p`
     text-decoration: line-through;
     color: ${theme.colors.paleFont};
 `
+
 const CartIconStyled = styled(CartIcon)`
     fill: white;
     text-align: center;
@@ -77,7 +78,7 @@ export const Description: React.FC<ProductDescriptionType> = ({
             <PrevPriceStyled>{prevPrice}</PrevPriceStyled>
             <Flex align="flex-end" justify="space-between">
                 <Counter />
-                <Button width="272px" height="56px" isShadow={true}>
+                <Button width="272px" height="56px" $isshadow={true}>
                     <CartIconStyled />
                     Add to cart
                 </Button>
