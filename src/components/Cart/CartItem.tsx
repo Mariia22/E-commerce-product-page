@@ -5,10 +5,10 @@ import styled from "styled-components"
 import { theme } from "../../style/Theme.styled"
 
 interface CartItemProps {
-  name: string
-  price: number
-  number: number
-  image: string
+    name: string
+    price: number
+    number: number
+    image: string
 }
 
 export const ImageStyled = styled.div<Partial<CartItemProps>>`
@@ -36,28 +36,28 @@ const BoldTextStyled = styled.p`
 `
 
 export const CartItem: React.FC<CartItemProps> = ({
-  name,
-  price,
-  number,
-  image,
+    name,
+    price,
+    number,
+    image,
 }) => {
-  return (
-    <Flex
-      width="100%"
-      justify="space-evenly"
-      align="center"
-      margin="0 0 1.5rem 0"
-    >
-      <ImageStyled image={image} />
-      <Flex direction="column">
-        <p>{name}</p>
-        <Flex>
-          <p>${price}x</p>
-          <p>{number}</p>
-          <BoldTextStyled>${price * number}</BoldTextStyled>
+    return (
+        <Flex
+            width="100%"
+            justify="space-evenly"
+            align="center"
+            margin="0 0 1.5rem 0"
+        >
+            <ImageStyled image={image} />
+            <Flex direction="column">
+                <p>{name}</p>
+                <Flex>
+                    <p>${price}x</p>
+                    <p>{number}</p>
+                    <BoldTextStyled>${price * number}</BoldTextStyled>
+                </Flex>
+            </Flex>
+            <DeleteIconStyled />
         </Flex>
-      </Flex>
-      <DeleteIconStyled />
-    </Flex>
-  )
+    )
 }

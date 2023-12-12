@@ -3,10 +3,10 @@ import styled from "styled-components"
 import { theme } from "../../style/Theme.styled"
 
 interface CartWrapperProps {
-  handleMouseEnter: (e: MouseEvent<HTMLElement>) => void
-  handleMouseLeave: () => void
-  children: ReactNode
-  sumInCart?: number
+    handleMouseEnter: (e: MouseEvent<HTMLElement>) => void
+    handleMouseLeave: () => void
+    children: ReactNode
+    sumInCart?: number
 }
 
 export const CartWrapperStyled = styled.div<Partial<CartWrapperProps>>`
@@ -29,18 +29,18 @@ export const CartWrapperStyled = styled.div<Partial<CartWrapperProps>>`
 `
 
 export const CartWrapper: React.FC<CartWrapperProps> = ({
-  children,
-  handleMouseEnter,
-  handleMouseLeave,
-  sumInCart,
+    children,
+    handleMouseEnter,
+    handleMouseLeave,
+    sumInCart,
 }) => {
-  return (
-    <CartWrapperStyled
-      onMouseEnter={(e: MouseEvent<HTMLElement>) => handleMouseEnter(e)}
-      onMouseLeave={handleMouseLeave}
-      sumInCart={sumInCart}
-    >
-      {children}
-    </CartWrapperStyled>
-  )
+    return (
+        <CartWrapperStyled
+            onMouseEnter={(e: MouseEvent<HTMLElement>) => handleMouseEnter(e)}
+            onMouseLeave={handleMouseLeave}
+            sumInCart={sumInCart}
+        >
+            {children}
+        </CartWrapperStyled>
+    )
 }
