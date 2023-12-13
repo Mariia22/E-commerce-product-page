@@ -3,18 +3,13 @@ import { Flex } from "../common/Flex/Flex"
 import { ProductImagesType } from "../../utils/types"
 import styled from "styled-components"
 import { Portal } from "../Portal/Portal"
-import { SwiperWrapper } from "../Swiper/SwiperWrapper"
+import { Swiper } from "../Swiper/SwiperWrapper"
 import { Thumbnails } from "./Thumbnails"
+import { PhotoProps } from "./types"
 
 export const Gallery: React.FC<ProductImagesType> = ({ images }) => {
     const [currentIndex, setIndex] = useState(0)
     const [isSwiper, setSwiper] = useState(false)
-    console.log(currentIndex)
-
-    type PhotoProps = {
-        background: string
-        $active?: number
-    }
 
     const MainPhotoStyled = styled.div<PhotoProps>`
         width: 445px;
@@ -57,7 +52,7 @@ export const Gallery: React.FC<ProductImagesType> = ({ images }) => {
             </Flex>
             {isSwiper && (
                 <Portal>
-                    <SwiperWrapper handleClick={handleClick} images={images} />
+                    <Swiper handleClick={handleClick} images={images} />
                 </Portal>
             )}
         </Flex>
