@@ -1,11 +1,15 @@
 import React, { useState } from "react"
 import { Flex } from "../common/Flex/Flex"
 import { ProductImagesType } from "../../utils/types"
-import styled, { css } from "styled-components"
-import { theme } from "../../style/Theme.styled"
+import styled from "styled-components"
+import { Portal } from "../Portal/Portal"
+import { SwiperWrapper } from "../Swiper/SwiperWrapper"
+import { Thumbnails } from "./Thumbnails"
 
 export const Gallery: React.FC<ProductImagesType> = ({ images }) => {
-    const [currentIndex] = useState(0)
+    const [currentIndex, setIndex] = useState(0)
+    const [isSwiper, setSwiper] = useState(false)
+    console.log(currentIndex)
 
     type PhotoProps = {
         background: string
@@ -20,40 +24,42 @@ export const Gallery: React.FC<ProductImagesType> = ({ images }) => {
         background-repeat: no-repeat;
         background-size: cover;
         border-radius: 15px;
-    `
-
-    const ThumbnailPhotoStyled = styled.div<PhotoProps>`
-        width: 88px;
-        height: 88px;
-        background: url(${({ background }) => background});
-        background-repeat: no-repeat;
-        background-size: cover;
-        border-radius: 10px;
 
         &:hover {
-            opacity: 0.5;
+            cursor: pointer;
         }
-
-        ${(props) =>
-            props.$active &&
-            css`
-                border: 2px solid ${theme.colors.secondary};
-                opacity: 0.5;
-            `}
     `
+
+    const handleClick = () => {
+        setSwiper(!isSwiper)
+    }
+
+    const handleChange = (id: number): void => {
+        setIndex(id)
+    }
 
     return (
         <Flex direction="column" margin="0 48px">
-            <MainPhotoStyled background={images[currentIndex].image} />
+            <MainPhotoStyled
+                background={images[currentIndex].image}
+                onClick={handleClick}
+            />
             <Flex justify="space-between">
                 {images.map((image, idx) => (
-                    <ThumbnailPhotoStyled
+                    <Thumbnails
                         key={image.id}
+                        id={idx}
                         background={image.thumbnail}
                         $active={+(currentIndex === idx)}
+                        handleChange={() => handleChange(idx)}
                     />
                 ))}
             </Flex>
+            {isSwiper && (
+                <Portal>
+                    <SwiperWrapper handleClick={handleClick} images={images} />
+                </Portal>
+            )}
         </Flex>
     )
 }

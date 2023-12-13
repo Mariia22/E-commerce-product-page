@@ -35,8 +35,8 @@ body {
     margin-top: 20px;
     max-width: 1100px;
     min-width: 375px;
-    min-height: 100vh;
-    width: 100%;
+    max-height: 100vh;
+    width: 100vw;
     overflow: hidden;
     @media ${(props) => props.theme.media.phone} {
         max-width: 100%;

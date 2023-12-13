@@ -9,7 +9,7 @@ export type ProductType = {
     images: Array<ImagesType>
 }
 
-type ImagesType = {
+export type ImagesType = {
     id: number
     image: string
     thumbnail: string
