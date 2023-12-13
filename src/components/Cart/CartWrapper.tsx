@@ -12,13 +12,13 @@ interface CartWrapperProps {
 export const CartWrapperStyled = styled.div<Partial<CartWrapperProps>>`
     position: relative;
     &::after {
-        content: "${({ sumInCart }) => (sumInCart ? sumInCart : "3")}";
+        content: "${({ sumInCart }) => (sumInCart === 0 ? "" : sumInCart)}";
         display: block;
         position: absolute;
         top: -8px;
         right: -5px;
         width: 19px;
-        height: ${({ sumInCart }) => (sumInCart ? "15px" : "15px")};
+        height: ${({ sumInCart }) => (sumInCart === 0 ? "0px" : "15px")};
         font-size: 0.625rem;
         font-weight: 700;
         border-radius: 6.5px;

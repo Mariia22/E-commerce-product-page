@@ -3,6 +3,8 @@ import { Flex } from "../common/Flex/Flex"
 import DeleteIcon from "../../assets/icons/icon-delete.svg"
 import styled from "styled-components"
 import { theme } from "../../style/Theme.styled"
+import { useAppDispatch } from "../../redux/hooks"
+import { cartSlice } from "../../redux/reducers/CartSlice"
 
 interface CartItemProps {
     name: string
@@ -41,6 +43,13 @@ export const CartItem: React.FC<CartItemProps> = ({
     number,
     image,
 }) => {
+    const dispatch = useAppDispatch()
+    const { removeFromCart } = cartSlice.actions
+
+    const handleClick = () => {
+        dispatch(removeFromCart())
+    }
+
     return (
         <Flex
             width="100%"
@@ -57,7 +66,9 @@ export const CartItem: React.FC<CartItemProps> = ({
                     <BoldTextStyled>${price * number}</BoldTextStyled>
                 </Flex>
             </Flex>
-            <DeleteIconStyled />
+            <div onClick={handleClick}>
+                <DeleteIconStyled />
+            </div>
         </Flex>
     )
 }

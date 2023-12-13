@@ -1,8 +1,14 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import IconMinus from "../../assets/icons/icon-minus.svg"
 import IconPlus from "../../assets/icons/icon-plus.svg"
 import { theme } from "../../style/Theme.styled"
+
+interface CounterProps {
+    counter: number
+    handleIncrement: () => void
+    handleDecrement: () => void
+}
 
 const CounterStyled = styled.div`
     width: 157px;
@@ -26,16 +32,18 @@ const IconWrapper = styled.div`
     }
 `
 
-export const Counter: React.FC = () => {
-    const [counter, setCounter] = useState(0)
-
+export const Counter: React.FC<CounterProps> = ({
+    counter,
+    handleDecrement,
+    handleIncrement,
+}) => {
     return (
         <CounterStyled>
-            <IconWrapper onClick={() => setCounter(counter - 1)}>
+            <IconWrapper onClick={handleDecrement}>
                 <IconMinus />
             </IconWrapper>
             <CounterValueStyled>{counter}</CounterValueStyled>
-            <IconWrapper onClick={() => setCounter(counter + 1)}>
+            <IconWrapper onClick={handleIncrement}>
                 <IconPlus />
             </IconWrapper>
         </CounterStyled>

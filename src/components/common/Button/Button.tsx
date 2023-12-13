@@ -7,9 +7,10 @@ type ButtonType = {
     height: string
     children?: React.ReactNode
     $isshadow?: boolean
+    handleClick: () => void
 }
 
-const ButtonStyled = styled.button<ButtonType>`
+const ButtonStyled = styled.button<Partial<ButtonType>>`
     font-family: "Kumbh Sans";
     font-weight: 700;
     line-height: normal;
@@ -37,9 +38,15 @@ export const Button: React.FC<ButtonType> = ({
     height,
     children,
     $isshadow,
+    handleClick,
 }) => {
     return (
-        <ButtonStyled width={width} height={height} $isshadow={$isshadow}>
+        <ButtonStyled
+            width={width}
+            height={height}
+            $isshadow={$isshadow}
+            onClick={handleClick}
+        >
             {" "}
             {children}
         </ButtonStyled>

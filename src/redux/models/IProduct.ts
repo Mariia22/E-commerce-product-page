@@ -4,4 +4,5 @@ export interface IProduct {
     price: number
     number: number
     image: string
+    stock: number
 }

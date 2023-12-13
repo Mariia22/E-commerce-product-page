@@ -9,6 +9,7 @@ import { theme } from "../../style/Theme.styled"
 import { Portal } from "../Portal/Portal"
 import { Cart, CartProps } from "../Cart/Cart"
 import { CartWrapper } from "../Cart/CartWrapper"
+import { useAppSelector } from "../../redux/hooks"
 
 const HeaderStyle = styled.div`
     display: flex;
@@ -41,6 +42,7 @@ export const Header: React.FC = () => {
     })
     const [isCartOn, setCartOn] = useState(false)
     const [delayHandler, setDelayHandler] = useState(0)
+    const { productsInCart } = useAppSelector((state) => state.cartReducer)
 
     const handleMouseEnter = (e: MouseEvent<HTMLElement>): void => {
         const element = e.target as HTMLElement
@@ -71,6 +73,7 @@ export const Header: React.FC = () => {
             <Nav />
             <Flex align="center" width="15%" justify="space-around">
                 <CartWrapper
+                    sumInCart={productsInCart[0].number}
                     handleMouseEnter={(e: MouseEvent<HTMLElement>) =>
                         handleMouseEnter(e)
                     }

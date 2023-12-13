@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState } from "react"
+import React, { MouseEvent } from "react"
 import styled from "styled-components"
 import { theme } from "../../style/Theme.styled"
 import { Flex } from "../common/Flex/Flex"
@@ -54,8 +54,11 @@ export const Cart: React.FC<CartProps> = ({
     handleMouseEnter,
     handleMouseLeave,
 }) => {
-    const [isEmptyCart] = useState(false)
     const { productsInCart } = useAppSelector((state) => state.cartReducer)
+
+    const handleClick = () => {
+        console.log("Check the cart")
+    }
 
     return (
         <CartStyled
@@ -71,9 +74,7 @@ export const Cart: React.FC<CartProps> = ({
                 justify="center"
                 margin="24px 0 0 0"
             >
-                {isEmptyCart ? (
-                    <CartText>Your cart is empty.</CartText>
-                ) : (
+                {productsInCart[0].number > 0 ? (
                     <CartDescription>
                         {productsInCart.map((item) => (
                             <CartItem
@@ -84,10 +85,16 @@ export const Cart: React.FC<CartProps> = ({
                                 image={item.image}
                             />
                         ))}
-                        <Button width="312px" height="56px">
+                        <Button
+                            width="312px"
+                            height="56px"
+                            handleClick={handleClick}
+                        >
                             Checkout
                         </Button>
                     </CartDescription>
+                ) : (
+                    <CartText>Your cart is empty.</CartText>
                 )}
             </Flex>
         </CartStyled>
