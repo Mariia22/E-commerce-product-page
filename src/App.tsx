@@ -1,17 +1,17 @@
 import React, { useState } from "react"
 import { Header } from "./components/Header/Header"
-import { Flex } from "./components/common/Flex/Flex"
 import { Description } from "./components/Description/Description"
 import { Gallery } from "./components/Gallery/Gallery"
 import { data } from "./utils/constants"
 import { ProductType } from "./utils/types"
+import { MainWrapper } from "./components/Main/MainWrapper"
 
 export const App: React.FC = () => {
     const [currentPage] = useState<ProductType>(data[0])
     return (
         <>
             <Header />
-            <Flex margin="50px 0 0 0">
+            <MainWrapper>
                 <Gallery images={currentPage.images} />
                 <Description
                     company={currentPage.company}
@@ -21,7 +21,7 @@ export const App: React.FC = () => {
                     discount={currentPage.discount}
                     prevPrice={currentPage.prevPrice}
                 />
-            </Flex>
+            </MainWrapper>
         </>
     )
 }

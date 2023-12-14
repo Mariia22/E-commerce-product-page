@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components"
 import font from "./../assets/fonts/KumbhSans-VariableFont_YOPQ,wght.ttf"
+import { device } from "./mediaQueries.styled"
 
 export const GlobalStyles = createGlobalStyle`
 *,
@@ -35,10 +36,10 @@ body {
     margin-top: 20px;
     max-width: 1100px;
     min-width: 375px;
-    max-height: 100vh;
     width: 100vw;
     overflow: hidden;
-    @media ${(props) => props.theme.media.phone} {
+
+    @media ${device.tablet} { 
         max-width: 100%;
         margin-top: 28px;
     }

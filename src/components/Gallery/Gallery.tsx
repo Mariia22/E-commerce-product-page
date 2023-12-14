@@ -34,7 +34,7 @@ export const Gallery: React.FC<ProductImagesType> = ({ images }) => {
     }
 
     return (
-        <Flex direction="column" margin="0 48px">
+        <Flex direction="column" margin="0 3% 0 48px">
             <MainPhotoStyled
                 background={images[currentIndex].image}
                 onClick={handleClick}

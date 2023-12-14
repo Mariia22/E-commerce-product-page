@@ -13,6 +13,6 @@ export const theme = {
         overlayColor: "rgba(0,0,0,0.75)",
     },
     media: {
-        phone: "(max-width: 375px)",
+        tablet: "(max-width: 768px)",
     },
 }

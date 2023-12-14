@@ -2,10 +2,15 @@ import React from "react"
 import { menu } from "../../../utils/constants"
 import styled from "styled-components"
 import { theme } from "../../../style/Theme.styled"
+import { device } from "../../../style/mediaQueries.styled"
 
 export const NavBarStyled = styled.div`
     display: flex;
     margin-top: 8px;
+
+    @media ${device.tablet} {
+        display: none;
+    }
 `
 
 export const NavLinkStyled = styled.a`
