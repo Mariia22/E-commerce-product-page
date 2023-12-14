@@ -38,6 +38,7 @@ const CartTitle = styled.div`
 
 const CartText = styled.p`
     font-weight: 700;
+    margin: 3.3rem 0 5.3rem;
     color: ${theme.colors.font};
 `
 

@@ -45,7 +45,7 @@ export const Gallery: React.FC<ProductImagesType> = ({ images }) => {
                         key={image.id}
                         id={idx}
                         background={image.thumbnail}
-                        $active={+(currentIndex === idx)}
+                        isActive={currentIndex === idx}
                         handleChange={() => handleChange(idx)}
                     />
                 ))}

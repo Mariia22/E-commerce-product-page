@@ -14,12 +14,12 @@ import { useAppSelector } from "../../redux/hooks"
 const HeaderStyle = styled.div`
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 8px 0 34px 0;
+    align-items: flex-start;
     border-bottom: 1px solid ${(props) => props.theme.colors.borderColor};
 `
 
 const LogoIconStyled = styled(LogoIcon)`
+    margin-top: 8px;
     &:hover {
         cursor: pointer;
     }
@@ -73,7 +73,7 @@ export const Header: React.FC = () => {
             <Nav />
             <Flex align="center" width="15%" justify="space-around">
                 <CartWrapper
-                    sumInCart={productsInCart[0].number}
+                    $sumincart={productsInCart[0].number}
                     handleMouseEnter={(e: MouseEvent<HTMLElement>) =>
                         handleMouseEnter(e)
                     }

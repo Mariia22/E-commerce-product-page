@@ -144,7 +144,7 @@ export const Swiper: React.FC<SwiperProps> = ({ images, handleClick }) => {
                             key={image.id}
                             id={idx}
                             background={image.thumbnail}
-                            $active={+(currentIndex === idx)}
+                            isActive={currentIndex === idx}
                             handleChange={() => handleChange(idx)}
                         />
                     ))}
