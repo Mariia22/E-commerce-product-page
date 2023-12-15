@@ -11,6 +11,7 @@ import { Cart, CartProps } from "../Cart/Cart"
 import { CartWrapper } from "../Cart/CartWrapper"
 import { useAppSelector } from "../../redux/hooks"
 import { device } from "../../style/mediaQueries.styled"
+import { useMediaQuery } from "react-responsive"
 
 const HeaderStyle = styled.div`
     display: flex;
@@ -19,13 +20,14 @@ const HeaderStyle = styled.div`
     border-bottom: 1px solid ${(props) => props.theme.colors.borderColor};
 
     @media ${device.tablet} {
-        margin: 0 19px 19px 24px;
+        margin: 0 1.19rem 1.19rem 1.5rem;
+        padding-top: 1.5rem;
         border-bottom: none;
     }
 `
 
 const LogoIconStyled = styled(LogoIcon)`
-    margin-top: 8px;
+    margin-top: 0.5rem;
     &:hover {
         cursor: pointer;
     }
@@ -90,10 +92,12 @@ export const Header: React.FC = () => {
     const [isCartOn, setCartOn] = useState(false)
     const [delayHandler, setDelayHandler] = useState(0)
     const { productsInCart } = useAppSelector((state) => state.cartReducer)
+    const isDesktop = useMediaQuery({ query: "(min-width: 767px)" })
 
     const handleMouseEnter = (e: MouseEvent<HTMLElement>): void => {
         const element = e.target as HTMLElement
         const rect = element.getBoundingClientRect()
+
         setCoords({
             left: rect.x + rect.width / 2,
             top: rect.y + scrollY + 50,
@@ -138,7 +142,7 @@ export const Header: React.FC = () => {
             {isCartOn && (
                 <Portal>
                     <Cart
-                        left={coords.left}
+                        left={isDesktop ? coords.left : undefined}
                         top={coords.top}
                         handleMouseEnter={stopTimerAndOpenCart}
                         handleMouseLeave={handleMouseLeave}

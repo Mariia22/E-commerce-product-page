@@ -16,7 +16,7 @@ export const Gallery: React.FC<ProductImagesType> = ({ images }) => {
     const [currentIndex, setIndex] = useState(0)
     const [isSwiper, setSwiper] = useState(false)
     const isDesktop = useMediaQuery({
-        query: "(min-width: 768px)",
+        query: "(min-width: 769px)",
     })
 
     const MainPhotoStyled = styled.div<PhotoProps>`

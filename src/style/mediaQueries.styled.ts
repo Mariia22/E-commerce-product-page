@@ -1,5 +1,5 @@
 const size = {
-    tablet: "768px",
+    tablet: "769px",
     desktop: "1440px",
 }
 

@@ -12,12 +12,12 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 @font-face {
-        font-family:'Kumbh Sans';
-        src: local('Kumbh Sans'), local('Kumbh Sans'),
-        url(${font}) format('ttf'),
-        font-weight: 300;
-        font-style: normal;
-    }
+  font-family:'Kumbh Sans';
+  src: local('Kumbh Sans'), local('Kumbh Sans'),
+  url(${font}) format('ttf'),
+  font-weight: 300;
+  font-style: normal;
+}
 
 body {
   display: flex;
@@ -41,6 +41,6 @@ body {
 
     @media ${device.tablet} { 
         max-width: 100%;
-        margin-top: 24px;
+        margin-top: 0;
     }
 }`

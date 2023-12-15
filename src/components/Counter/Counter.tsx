@@ -3,6 +3,7 @@ import styled from "styled-components"
 import IconMinus from "../../assets/icons/icon-minus.svg"
 import IconPlus from "../../assets/icons/icon-plus.svg"
 import { theme } from "../../style/Theme.styled"
+import { device } from "../../style/mediaQueries.styled"
 
 interface CounterProps {
     counter: number
@@ -13,12 +14,17 @@ interface CounterProps {
 const CounterStyled = styled.div`
     width: 157px;
     height: 56px;
-    margin-top: 32px;
+    margin-top: 2rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: ${theme.colors.palePrimary};
     border-radius: 10px;
+
+    @media ${device.tablet} {
+        width: 327px;
+        margin: 0 0 1rem;
+    }
 `
 
 const CounterValueStyled = styled.p`

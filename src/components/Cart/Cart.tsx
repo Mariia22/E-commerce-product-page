@@ -7,7 +7,7 @@ import { CartItem } from "./CartItem"
 import { useAppSelector } from "../../redux/hooks"
 
 export interface CartProps {
-    left: number
+    left?: number
     top: number
     handleMouseEnter: (e: MouseEvent<HTMLElement>) => void
     handleMouseLeave: () => void
@@ -15,7 +15,7 @@ export interface CartProps {
 
 const CartStyled = styled.div<Partial<CartProps>>`
     position: absolute;
-    left: ${({ left }) => left || 0}px;
+    left: ${({ left }) => `${left}px` || `50%`};
     top: ${({ top }) => top || 0}px;
     transform: translateX(-50%);
     display: flex;
