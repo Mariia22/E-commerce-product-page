@@ -4,6 +4,7 @@ import svgr from "vite-plugin-svgr"
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    base: "/E-commerce-product-page/",
     plugins: [
         react(),
         svgr({
