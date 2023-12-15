@@ -41,6 +41,6 @@ body {
 
     @media ${device.tablet} { 
         max-width: 100%;
-        margin-top: 28px;
+        margin-top: 24px;
     }
 }`

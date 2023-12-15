@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { theme } from "../../../style/Theme.styled"
+import { device } from "../../../style/mediaQueries.styled"
 
 type ContainerProps = {
     width: string
@@ -23,5 +24,10 @@ export const ContainerStyled = styled.div<ContainerProps>`
     &:hover {
         border: 2px solid ${theme.colors.secondary};
         cursor: pointer;
+    }
+
+    @media ${device.tablet} {
+        width: 24px;
+        height: 24px;
     }
 `
