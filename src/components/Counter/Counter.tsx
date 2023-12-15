@@ -14,7 +14,7 @@ interface CounterProps {
 const CounterStyled = styled.div`
     width: 157px;
     height: 56px;
-    margin-top: 2rem;
+    margin: 2rem 1rem 0 0;
     display: flex;
     justify-content: space-around;
     align-items: center;

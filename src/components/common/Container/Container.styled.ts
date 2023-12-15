@@ -26,7 +26,7 @@ export const ContainerStyled = styled.div<ContainerProps>`
         cursor: pointer;
     }
 
-    @media ${device.tablet} {
+    @media ${device.mobile} {
         width: 24px;
         height: 24px;
     }

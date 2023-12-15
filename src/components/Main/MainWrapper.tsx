@@ -10,7 +10,7 @@ const MainWrapperStyled = styled.div`
     display: flex;
     margin: 3.125rem 0 0 0;
 
-    @media ${device.tablet} {
+    @media ${device.mobile} {
         flex-direction: column;
         margin: 1.75rem 0 5.5rem 0;
     }

@@ -39,7 +39,7 @@ body {
     width: 100vw;
     overflow: hidden;
 
-    @media ${device.tablet} { 
+    @media ${device.mobile} { 
         max-width: 100%;
         margin-top: 0;
     }

@@ -4,12 +4,12 @@ import styled from "styled-components"
 import { theme } from "../../../style/Theme.styled"
 import { device } from "../../../style/mediaQueries.styled"
 
-export const NavBarStyled = styled.div`
+const NavBarStyled = styled.div`
     display: flex;
     margin-top: 8px;
 
-    @media ${device.tablet} {
-        display: none;
+    @media ${device.mobile} {
+        flex-direction: column;
     }
 `
 
@@ -20,6 +20,16 @@ export const NavLinkStyled = styled.a`
     &:hover {
         cursor: pointer;
         border-bottom: 4px solid ${theme.colors.secondary};
+    }
+
+    @media ${device.mobile} {
+        height: 2rem;
+        margin: 0 0 10px 0;
+        padding-bottom: 6px;
+        color: ${theme.colors.title};
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 26px;
     }
 `
 

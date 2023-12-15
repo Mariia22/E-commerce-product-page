@@ -12,7 +12,4 @@ export const theme = {
         shadowColor: "rgba(29, 32, 38, 0.50)",
         overlayColor: "rgba(0,0,0,0.75)",
     },
-    media: {
-        tablet: "(max-width: 768px)",
-    },
 }

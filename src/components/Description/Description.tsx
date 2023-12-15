@@ -26,7 +26,7 @@ const TitleStyled = styled.h1`
     margin: 1.7rem 0 2rem;
     color: ${theme.colors.title};
 
-    @media ${device.tablet} {
+    @media ${device.mobile} {
         font-size: 1.75rem;
         line-height: 2rem;
         margin: 1.19rem 0 0.94rem;
@@ -37,7 +37,7 @@ const DescriptionStyled = styled.p`
     font-weight: 400;
     line-height: 1.625rem;
 
-    @media ${device.tablet} {
+    @media ${device.mobile} {
         font-size: 0.94rem;
         line-height: 1.6rem;
     }

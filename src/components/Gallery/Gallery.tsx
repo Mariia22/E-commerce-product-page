@@ -16,7 +16,7 @@ export const Gallery: React.FC<ProductImagesType> = ({ images }) => {
     const [currentIndex, setIndex] = useState(0)
     const [isSwiper, setSwiper] = useState(false)
     const isDesktop = useMediaQuery({
-        query: "(min-width: 769px)",
+        query: "(min-width: 426px)",
     })
 
     const MainPhotoStyled = styled.div<PhotoProps>`
@@ -33,6 +33,11 @@ export const Gallery: React.FC<ProductImagesType> = ({ images }) => {
         }
 
         @media ${device.tablet} {
+            width: 355px;
+            height: 355px;
+        }
+
+        @media ${device.mobile} {
             position: relative;
             width: 375px;
             height: 300px;
@@ -45,6 +50,10 @@ export const Gallery: React.FC<ProductImagesType> = ({ images }) => {
         margin: 0 3% 0 48px;
 
         @media ${device.tablet} {
+            margin: 0 0 0 20px;
+        }
+
+        @media ${device.mobile} {
             margin: 0;
             align-items: center;
         }
