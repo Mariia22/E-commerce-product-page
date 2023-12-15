@@ -8,6 +8,7 @@ import { Thumbnails } from "../Gallery/Thumbnails"
 import { PhotoProps } from "../Gallery/types"
 import PreviousIcon from "../../assets/icons/icon-previous.svg"
 import NextIcon from "../../assets/icons/icon-next.svg"
+import { SwiperButton } from "./SwiperButton"
 
 interface SwiperProps {
     handleClick: () => void
@@ -40,6 +41,7 @@ const CloseIconStyled = styled(CloseIcon)`
 const CloseIconWrapperStyled = styled.div`
     margin-left: auto;
 `
+
 const SwiperStyled = styled.div<PhotoProps>`
     width: 550px;
     height: 550px;
@@ -51,42 +53,6 @@ const SwiperStyled = styled.div<PhotoProps>`
     opacity: 1;
 
     &:hover {
-        cursor: pointer;
-    }
-`
-
-const PreviousButtonStyled = styled.div`
-    position: absolute;
-    top: 50%;
-    left: -28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background-color: ${theme.colors.primary};
-    stroke: ${theme.colors.title};
-    &:hover {
-        stroke: ${theme.colors.secondary};
-        cursor: pointer;
-    }
-`
-
-const NextButtonStyled = styled.div`
-    position: absolute;
-    top: 50%;
-    right: -28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background-color: ${theme.colors.primary};
-    stroke: ${theme.colors.title};
-    &:hover {
-        stroke: ${theme.colors.secondary};
         cursor: pointer;
     }
 `
@@ -126,12 +92,22 @@ export const Swiper: React.FC<SwiperProps> = ({ images, handleClick }) => {
                     <CloseIconStyled />
                 </CloseIconWrapperStyled>
                 <SwiperStyled background={images[currentIndex].image}>
-                    <PreviousButtonStyled onClick={handlePreviousButton}>
+                    <SwiperButton
+                        handleClick={handlePreviousButton}
+                        left="-28px"
+                        width="56px"
+                        height="56px"
+                    >
                         <PreviousIcon />
-                    </PreviousButtonStyled>
-                    <NextButtonStyled onClick={handleNextButton}>
+                    </SwiperButton>
+                    <SwiperButton
+                        handleClick={handleNextButton}
+                        right="-28px"
+                        width="56px"
+                        height="56px"
+                    >
                         <NextIcon />
-                    </NextButtonStyled>
+                    </SwiperButton>
                 </SwiperStyled>
                 <Flex
                     justify="space-between"
