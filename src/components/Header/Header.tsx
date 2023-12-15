@@ -19,8 +19,8 @@ const HeaderStyle = styled.div`
     border-bottom: 1px solid ${(props) => props.theme.colors.borderColor};
 
     @media ${device.tablet} {
-      margin: 0 19px 19px 24px;
-      border-bottom: none;
+        margin: 0 19px 19px 24px;
+        border-bottom: none;
     }
 `
 
@@ -31,7 +31,7 @@ const LogoIconStyled = styled(LogoIcon)`
     }
 
     @media ${device.tablet} {
-      margin-top: 0;
+        margin-top: 0;
     }
 `
 
@@ -39,11 +39,11 @@ const MenuIconStyled = styled(MenuIcon)`
     display: none;
 
     @media ${device.tablet} {
-      display: block;
-      margin-top: 4px;
-      &:hover {
-        cursor: pointer;
-    }
+        display: block;
+        margin-top: 4px;
+        &:hover {
+            cursor: pointer;
+        }
     }
 `
 
@@ -57,94 +57,94 @@ const CartIconStyled = styled(CartIcon)`
     }
 `
 const MenuWrapper = styled.div`
-  display: block;
+    display: block;
 `
 
 const MobileWrapper = styled.div`
-  display: flex;
+    display: flex;
 
-  @media ${device.tablet} {
-      width: 50%;
-      justify-content: space-between;
+    @media ${device.tablet} {
+        width: 50%;
+        justify-content: space-between;
     }
 `
 
 const UserWrapper = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 15%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 15%;
 
-  @media ${device.tablet} {
-      width: 18%;
-      justify-content: space-between;
-      align-items: flex-start;
+    @media ${device.tablet} {
+        width: 18%;
+        justify-content: space-between;
+        align-items: flex-start;
     }
 `
 
 export const Header: React.FC = () => {
-  const [coords, setCoords] = useState<Pick<CartProps, "top" | "left">>({
-    left: 0,
-    top: 0,
-  })
-  const [isCartOn, setCartOn] = useState(false)
-  const [delayHandler, setDelayHandler] = useState(0)
-  const { productsInCart } = useAppSelector((state) => state.cartReducer)
-
-  const handleMouseEnter = (e: MouseEvent<HTMLElement>): void => {
-    const element = e.target as HTMLElement
-    const rect = element.getBoundingClientRect()
-    setCoords({
-      left: rect.x + rect.width / 2,
-      top: rect.y + scrollY + 50,
+    const [coords, setCoords] = useState<Pick<CartProps, "top" | "left">>({
+        left: 0,
+        top: 0,
     })
-    stopTimerAndOpenCart()
-  }
+    const [isCartOn, setCartOn] = useState(false)
+    const [delayHandler, setDelayHandler] = useState(0)
+    const { productsInCart } = useAppSelector((state) => state.cartReducer)
 
-  const handleMouseLeave = () => {
-    setDelayHandler(
-      window.setTimeout(() => {
-        setCartOn(false)
-      }, 500)
+    const handleMouseEnter = (e: MouseEvent<HTMLElement>): void => {
+        const element = e.target as HTMLElement
+        const rect = element.getBoundingClientRect()
+        setCoords({
+            left: rect.x + rect.width / 2,
+            top: rect.y + scrollY + 50,
+        })
+        stopTimerAndOpenCart()
+    }
+
+    const handleMouseLeave = () => {
+        setDelayHandler(
+            window.setTimeout(() => {
+                setCartOn(false)
+            }, 500)
+        )
+    }
+
+    const stopTimerAndOpenCart = () => {
+        clearTimeout(delayHandler)
+        setCartOn(true)
+    }
+
+    return (
+        <HeaderStyle>
+            <MobileWrapper>
+                <MenuWrapper>
+                    <MenuIconStyled />
+                </MenuWrapper>
+                <LogoIconStyled />
+            </MobileWrapper>
+            <Nav />
+            <UserWrapper>
+                <CartWrapper
+                    $sumincart={productsInCart[0].number}
+                    handleMouseEnter={(e: MouseEvent<HTMLElement>) =>
+                        handleMouseEnter(e)
+                    }
+                    handleMouseLeave={handleMouseLeave}
+                >
+                    <CartIconStyled />
+                </CartWrapper>
+                <User />
+            </UserWrapper>
+            {isCartOn && (
+                <Portal>
+                    <Cart
+                        left={coords.left}
+                        top={coords.top}
+                        handleMouseEnter={stopTimerAndOpenCart}
+                        handleMouseLeave={handleMouseLeave}
+                    />
+                </Portal>
+            )}
+        </HeaderStyle>
     )
-  }
-
-  const stopTimerAndOpenCart = () => {
-    clearTimeout(delayHandler)
-    setCartOn(true)
-  }
-
-  return (
-    <HeaderStyle>
-      <MobileWrapper>
-        <MenuWrapper>
-          <MenuIconStyled />
-        </MenuWrapper>
-        <LogoIconStyled />
-      </MobileWrapper>
-      <Nav />
-      <UserWrapper>
-        <CartWrapper
-          $sumincart={productsInCart[0].number}
-          handleMouseEnter={(e: MouseEvent<HTMLElement>) =>
-            handleMouseEnter(e)
-          }
-          handleMouseLeave={handleMouseLeave}
-        >
-          <CartIconStyled />
-        </CartWrapper>
-        <User />
-      </UserWrapper>
-      {isCartOn && (
-        <Portal>
-          <Cart
-            left={coords.left}
-            top={coords.top}
-            handleMouseEnter={stopTimerAndOpenCart}
-            handleMouseLeave={handleMouseLeave}
-          />
-        </Portal>
-      )}
-    </HeaderStyle>
-  )
 }
