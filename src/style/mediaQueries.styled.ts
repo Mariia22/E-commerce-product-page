@@ -4,6 +4,6 @@ const size = {
 }
 
 export const device = {
-    mobile: `(max-width: ${size.mobile})`,
-    tablet: `(max-width: ${size.tablet})`,
+    mobile: `only screen and (max-width: ${size.mobile})`,
+    tablet: `only screen and (max-width: ${size.tablet})`,
 }
