@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { theme } from "../../../style/Theme.styled"
+import { device } from "../../../style/mediaQueries.styled"
 
 type ButtonType = {
     width: string
@@ -30,6 +31,10 @@ const ButtonStyled = styled.button<Partial<ButtonType>>`
 
     &:hover {
         cursor: pointer;
+    }
+
+    @media ${device.tablet} {
+        width: 327px;
     }
 `
 

@@ -1,9 +1,9 @@
 import React, { MouseEvent, useState } from "react"
 import { Portal } from "../../Portal/Portal"
 import styled from "styled-components"
-import { Nav } from "./Nav"
 import CloseIcon from "../../../assets/icons/icon-close.svg"
 import { theme } from "../../../style/Theme.styled"
+import { NavMobileLink } from "./NavMobileLink"
 
 interface NavProps {
     children: React.ReactNode
@@ -59,7 +59,7 @@ export const NavMobile: React.FC<NavProps> = ({ children }) => {
                         >
                             <CloseIcon />
                         </CloseIconStyled>
-                        <Nav />
+                        <NavMobileLink />
                     </NavWrapper>
                 </Portal>
             )}

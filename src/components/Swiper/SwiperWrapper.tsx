@@ -9,6 +9,7 @@ import { PhotoProps } from "../Gallery/types"
 import PreviousIcon from "../../assets/icons/icon-previous.svg"
 import NextIcon from "../../assets/icons/icon-next.svg"
 import { SwiperButton } from "./SwiperButton"
+import { device } from "../../style/mediaQueries.styled"
 
 interface SwiperProps {
     handleClick: () => void
@@ -54,6 +55,11 @@ const SwiperStyled = styled.div<PhotoProps>`
 
     &:hover {
         cursor: pointer;
+    }
+
+    @media ${device.tablet} {
+        width: 350px;
+        height: 350px;
     }
 `
 

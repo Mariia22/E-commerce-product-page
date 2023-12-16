@@ -1,18 +1,54 @@
 import React, { useState } from "react"
-import { Flex } from "../common/Flex/Flex"
 import { Button } from "../common/Button/Button"
 import { Counter } from "../Counter/Counter"
 import styled from "styled-components"
 import { theme } from "../../style/Theme.styled"
 import { ProductDescriptionType } from "../../utils/types"
 import CartIcon from "../../assets/icons/icon-shape.svg"
-import {
-    useAppDispatch,
-    useAppSelector,
-    useMediaQuery,
-} from "../../redux/hooks"
+import { useAppDispatch, useAppSelector } from "../../redux/hooks"
 import { cartSlice } from "../../redux/reducers/CartSlice"
 import { device } from "../../style/mediaQueries.styled"
+import { Flex } from "../common/Flex/Flex"
+
+const DescriptionWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 0.75em 2.94rem 0px 5%;
+
+    @media ${device.mobile} {
+        margin: 0 1.5rem;
+    }
+`
+
+const PriceWrapper = styled.div`
+    display: flex;
+
+    @media ${device.tablet} {
+        display: none;
+    }
+`
+const PriceMobileWrapper = styled.div`
+    display: none;
+
+    @media ${device.tablet} {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 1.75rem 0 2rem;
+    }
+`
+
+const ButtonWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    @media ${device.tablet} {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+`
 
 const CompanyTitleStyled = styled.h2`
     font-size: 0.81rem;
@@ -90,7 +126,6 @@ export const Description: React.FC<ProductDescriptionType> = ({
     const { productsInCart } = useAppSelector((state) => state.cartReducer)
     const { increment } = cartSlice.actions
     const dispatch = useAppDispatch()
-    const isDesktop = useMediaQuery("(min-width: 769px)")
 
     const handleIncrement = () => {
         if (counter < productsInCart[0].stock) {
@@ -110,46 +145,33 @@ export const Description: React.FC<ProductDescriptionType> = ({
     }
 
     return (
-        <Flex
-            direction="column"
-            margin={isDesktop ? "12px 47px 0px 5%" : "0 1.5rem"}
-        >
+        <DescriptionWrapper>
             <CompanyTitleStyled>{company}</CompanyTitleStyled>
             <TitleStyled>{title}</TitleStyled>
             <DescriptionStyled>{description}</DescriptionStyled>
-            {isDesktop ? (
-                <>
-                    <Flex width="40%" justify="space-between" align="center">
-                        <PriceStyled>{price}</PriceStyled>
-                        <DiscountStyled>{discount}</DiscountStyled>
-                    </Flex>
-                    <PrevPriceStyled>{prevPrice}</PrevPriceStyled>
-                </>
-            ) : (
-                <Flex
-                    align="center"
-                    justify="space-between"
-                    margin="1.75rem 0 2rem"
-                >
-                    <Flex width="50%" justify="space-between" align="center">
-                        <PriceStyled>{price}</PriceStyled>
-                        <DiscountStyled>{discount}</DiscountStyled>
-                    </Flex>
-                    <PrevPriceStyled>{prevPrice}</PrevPriceStyled>
+            <PriceWrapper>
+                <Flex>
+                    <PriceStyled>{price}</PriceStyled>
+                    <DiscountStyled>{discount}</DiscountStyled>
                 </Flex>
-            )}
-            <Flex
-                align={isDesktop ? "flex-end" : "center"}
-                justify={isDesktop ? "space-between" : "center"}
-                direction={isDesktop ? "row" : "column"}
-            >
+                <PrevPriceStyled>{prevPrice}</PrevPriceStyled>
+            </PriceWrapper>
+            {/* For mobile  */}
+            <PriceMobileWrapper>
+                <Flex width="50%" justify="space-between" align="center">
+                    <PriceStyled>{price}</PriceStyled>
+                    <DiscountStyled>{discount}</DiscountStyled>
+                </Flex>
+                <PrevPriceStyled>{prevPrice}</PrevPriceStyled>
+            </PriceMobileWrapper>
+            <ButtonWrapper>
                 <Counter
                     counter={counter}
                     handleIncrement={handleIncrement}
                     handleDecrement={handleDecrement}
                 />
                 <Button
-                    width={isDesktop ? "272px" : "327px"}
+                    width={"272px"}
                     height="56px"
                     $isshadow={true}
                     handleClick={handleClick}
@@ -157,7 +179,7 @@ export const Description: React.FC<ProductDescriptionType> = ({
                     <CartIconStyled />
                     Add to cart
                 </Button>
-            </Flex>
-        </Flex>
+            </ButtonWrapper>
+        </DescriptionWrapper>
     )
 }

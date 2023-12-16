@@ -9,7 +9,7 @@ const NavBarStyled = styled.div`
     margin-top: 8px;
 
     @media ${device.mobile} {
-        flex-direction: column;
+        display: none;
     }
 `
 
@@ -23,13 +23,7 @@ export const NavLinkStyled = styled.a`
     }
 
     @media ${device.mobile} {
-        height: 2rem;
-        margin: 0 0 10px 0;
-        padding-bottom: 6px;
-        color: ${theme.colors.title};
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 26px;
+        display: none;
     }
 `
 
