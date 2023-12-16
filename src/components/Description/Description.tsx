@@ -22,6 +22,7 @@ const DescriptionWrapper = styled.div`
 
 const PriceWrapper = styled.div`
     display: flex;
+    flex-direction: column;
 
     @media ${device.tablet} {
         display: none;
@@ -149,8 +150,9 @@ export const Description: React.FC<ProductDescriptionType> = ({
             <CompanyTitleStyled>{company}</CompanyTitleStyled>
             <TitleStyled>{title}</TitleStyled>
             <DescriptionStyled>{description}</DescriptionStyled>
+            {/* For desktop  */}
             <PriceWrapper>
-                <Flex>
+                <Flex width="40%" justify="space-between" align="center">
                     <PriceStyled>{price}</PriceStyled>
                     <DiscountStyled>{discount}</DiscountStyled>
                 </Flex>

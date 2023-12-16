@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState } from "react"
+import React, { MouseEvent, TouchEvent, useState } from "react"
 import { User } from "./User/User"
 import { Nav } from "./Nav/Nav"
 import CartIcon from "../../assets/icons/icon-cart.svg"
@@ -104,7 +104,9 @@ export const Header: React.FC = () => {
     const [delayHandler, setDelayHandler] = useState(0)
     const { productsInCart } = useAppSelector((state) => state.cartReducer)
 
-    const handleMouseEnter = (e: MouseEvent<HTMLElement>): void => {
+    const handleMouseEnter = (
+        e: MouseEvent<HTMLElement> | TouchEvent
+    ): void => {
         const element = e.target as HTMLElement
         const rect = element.getBoundingClientRect()
 
@@ -141,9 +143,9 @@ export const Header: React.FC = () => {
             <UserWrapper>
                 <CartWrapper
                     $sumincart={productsInCart[0].number}
-                    handleMouseEnter={(e: MouseEvent<HTMLElement>) =>
-                        handleMouseEnter(e)
-                    }
+                    handleMouseEnter={(
+                        e: MouseEvent<HTMLElement> | TouchEvent
+                    ) => handleMouseEnter(e)}
                     handleMouseLeave={handleMouseLeave}
                 >
                     <CartIconStyled />

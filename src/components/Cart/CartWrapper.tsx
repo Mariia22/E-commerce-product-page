@@ -1,9 +1,9 @@
-import React, { MouseEvent, ReactNode } from "react"
+import React, { MouseEvent, ReactNode, TouchEvent } from "react"
 import styled from "styled-components"
 import { theme } from "../../style/Theme.styled"
 
 interface CartWrapperProps {
-    handleMouseEnter: (e: MouseEvent<HTMLElement>) => void
+    handleMouseEnter: (e: MouseEvent<HTMLElement> | TouchEvent) => void
     handleMouseLeave: () => void
     children: ReactNode
     $sumincart?: number
@@ -38,6 +38,8 @@ export const CartWrapper: React.FC<CartWrapperProps> = ({
         <CartWrapperStyled
             onMouseEnter={(e: MouseEvent<HTMLElement>) => handleMouseEnter(e)}
             onMouseLeave={handleMouseLeave}
+            onTouchStart={(e: TouchEvent) => handleMouseEnter(e)}
+            onTouchEnd={handleMouseLeave}
             $sumincart={$sumincart}
         >
             {children}
