@@ -6,10 +6,10 @@ import styled from "styled-components"
 import { theme } from "../../style/Theme.styled"
 import { ProductDescriptionType } from "../../utils/types"
 import CartIcon from "../../assets/icons/icon-shape.svg"
-import { useAppDispatch, useAppSelector } from "../../redux/hooks"
+import { useAppDispatch, useAppSelector, useMediaQuery } from "../../redux/hooks"
 import { cartSlice } from "../../redux/reducers/CartSlice"
 import { device } from "../../style/mediaQueries.styled"
-import { useMediaQuery } from "react-responsive"
+
 
 const CompanyTitleStyled = styled.h2`
     font-size: 0.81rem;
@@ -76,85 +76,85 @@ const CartIconStyled = styled(CartIcon)`
 `
 
 export const Description: React.FC<ProductDescriptionType> = ({
-    company,
-    title,
-    description,
-    price,
-    discount,
-    prevPrice,
+  company,
+  title,
+  description,
+  price,
+  discount,
+  prevPrice,
 }) => {
-    const [counter, setCounter] = useState(0)
-    const { productsInCart } = useAppSelector((state) => state.cartReducer)
-    const { increment } = cartSlice.actions
-    const dispatch = useAppDispatch()
-    const isDesktop = useMediaQuery({ query: "(min-width: 769px)" })
+  const [counter, setCounter] = useState(0)
+  const { productsInCart } = useAppSelector((state) => state.cartReducer)
+  const { increment } = cartSlice.actions
+  const dispatch = useAppDispatch()
+  const isDesktop = useMediaQuery("(min-width: 769px)")
 
-    const handleIncrement = () => {
-        if (counter < productsInCart[0].stock) {
-            setCounter(counter + 1)
-        }
+  const handleIncrement = () => {
+    if (counter < productsInCart[0].stock) {
+      setCounter(counter + 1)
     }
+  }
 
-    const handleDecrement = () => {
-        if (counter > 0) {
-            setCounter(counter - 1)
-        }
+  const handleDecrement = () => {
+    if (counter > 0) {
+      setCounter(counter - 1)
     }
+  }
 
-    const handleClick = () => {
-        dispatch(increment(counter))
-        setCounter(0)
-    }
+  const handleClick = () => {
+    dispatch(increment(counter))
+    setCounter(0)
+  }
 
-    return (
+  return (
+    <Flex
+      direction="column"
+      margin={isDesktop ? "12px 47px 0px 5%" : "0 1.5rem"}
+    >
+      <CompanyTitleStyled>{company}</CompanyTitleStyled>
+      <TitleStyled>{title}</TitleStyled>
+      <DescriptionStyled>{description}</DescriptionStyled>
+      {isDesktop ? (
+        <>
+          <Flex width="40%" justify="space-between" align="center">
+            <PriceStyled>{price}</PriceStyled>
+            <DiscountStyled>{discount}</DiscountStyled>
+          </Flex>
+          <PrevPriceStyled>{prevPrice}</PrevPriceStyled>
+        </>
+      ) : (
         <Flex
-            direction="column"
-            margin={isDesktop ? "12px 47px 0px 5%" : "0 1.5rem"}
+          align="center"
+          justify="space-between"
+          margin="1.75rem 0 2rem"
         >
-            <CompanyTitleStyled>{company}</CompanyTitleStyled>
-            <TitleStyled>{title}</TitleStyled>
-            <DescriptionStyled>{description}</DescriptionStyled>
-            {isDesktop ? (
-                <>
-                    <Flex width="40%" justify="space-between" align="center">
-                        <PriceStyled>{price}</PriceStyled>
-                        <DiscountStyled>{discount}</DiscountStyled>
-                    </Flex>
-                    <PrevPriceStyled>{prevPrice}</PrevPriceStyled>
-                </>
-            ) : (
-                <Flex
-                    align="center"
-                    justify="space-between"
-                    margin="1.75rem 0 2rem"
-                >
-                    <Flex width="50%" justify="space-between" align="center">
-                        <PriceStyled>{price}</PriceStyled>
-                        <DiscountStyled>{discount}</DiscountStyled>
-                    </Flex>
-                    <PrevPriceStyled>{prevPrice}</PrevPriceStyled>
-                </Flex>
-            )}
-            <Flex
-                align={isDesktop ? "flex-end" : "center"}
-                justify={isDesktop ? "space-between" : "center"}
-                direction={isDesktop ? "row" : "column"}
-            >
-                <Counter
-                    counter={counter}
-                    handleIncrement={handleIncrement}
-                    handleDecrement={handleDecrement}
-                />
-                <Button
-                    width={isDesktop ? "272px" : "327px"}
-                    height="56px"
-                    $isshadow={true}
-                    handleClick={handleClick}
-                >
-                    <CartIconStyled />
-                    Add to cart
-                </Button>
-            </Flex>
+          <Flex width="50%" justify="space-between" align="center">
+            <PriceStyled>{price}</PriceStyled>
+            <DiscountStyled>{discount}</DiscountStyled>
+          </Flex>
+          <PrevPriceStyled>{prevPrice}</PrevPriceStyled>
         </Flex>
-    )
+      )}
+      <Flex
+        align={isDesktop ? "flex-end" : "center"}
+        justify={isDesktop ? "space-between" : "center"}
+        direction={isDesktop ? "row" : "column"}
+      >
+        <Counter
+          counter={counter}
+          handleIncrement={handleIncrement}
+          handleDecrement={handleDecrement}
+        />
+        <Button
+          width={isDesktop ? "272px" : "327px"}
+          height="56px"
+          $isshadow={true}
+          handleClick={handleClick}
+        >
+          <CartIconStyled />
+          Add to cart
+        </Button>
+      </Flex>
+    </Flex>
+  )
 }
