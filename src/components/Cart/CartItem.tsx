@@ -66,7 +66,7 @@ export const CartItem: React.FC<CartItemProps> = ({
                     <BoldTextStyled>${price * number}</BoldTextStyled>
                 </Flex>
             </Flex>
-            <div onClick={handleClick}>
+            <div onClick={handleClick} onTouchEnd={handleClick}>
                 <DeleteIconStyled />
             </div>
         </Flex>

@@ -19,28 +19,29 @@ export const GlobalStyles = createGlobalStyle`
   font-style: normal;
 }
 
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
 body {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  min-width: 375px;
+  min-height: 100vh;
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.font};
   font-family: "Kumbh Sans";
   line-height: 1.66;
-  font-size: 16px;
 }
 
 #root {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    max-width: 1100px;
-    min-width: 375px;
-    width: 100vw;
-    overflow: hidden;
-
+  max-width: 1100px;
+  width: 100vw;
+  overflow: hidden;
     @media ${device.mobile} { 
         max-width: 100%;
-        margin-top: 0;
     }
 }`

@@ -16,6 +16,7 @@ import { NavMobile } from "./Nav/NavMobile"
 const HeaderStyle = styled.div`
     display: flex;
     justify-content: space-between;
+    margin-top: 1.25rem;
     align-items: flex-start;
     border-bottom: 1px solid ${(props) => props.theme.colors.borderColor};
 
