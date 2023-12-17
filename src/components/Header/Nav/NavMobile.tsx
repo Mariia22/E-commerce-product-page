@@ -1,5 +1,4 @@
 import React, { MouseEvent, useState } from "react"
-import { Portal } from "../../Portal/Portal"
 import styled from "styled-components"
 import CloseIcon from "../../../assets/icons/icon-close.svg"
 import { theme } from "../../../style/Theme.styled"
@@ -9,27 +8,47 @@ interface NavProps {
     children: React.ReactNode
 }
 
+interface NavWrapperProps {
+    active: string
+}
+
 const MenuWrapper = styled.div`
     display: block;
 `
 
-const NavWrapper = styled.div`
+const NavWrapper = styled.div<NavWrapperProps>`
     position: absolute;
     width: 250px;
     height: 200%;
-    padding: 25px 0 0 25px;
+    padding: 1.5rem 0 0 0;
     top: 0;
     left: 0;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     background-color: ${theme.colors.primary};
+    transform: ${({ active }) =>
+        active === "true" ? "translateX(0)" : "translateX(-100%)"};
+    transition: transform 0.3s ease-in-out;
 `
 
-const CloseIconStyled = styled.div`
-    width: 13px;
-    height: 13px;
+const CloseIconStyled = styled(CloseIcon)`
+    width: 15px;
+    height: 15px;
     fill: ${theme.colors.font};
-    margin-bottom: 3.375rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+`
+
+const CloseIconWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.375rem;
+    padding: 0.4rem 0 2rem 0.3rem;
+    z-index: 5;
 
     &:hover {
         cursor: pointer;
@@ -37,32 +56,26 @@ const CloseIconStyled = styled.div`
 `
 
 export const NavMobile: React.FC<NavProps> = ({ children }) => {
-    const [isMenuOn, setMenuOn] = useState(false)
+    const [active, setActive] = useState(false)
 
     const handleClick = () => {
-        setMenuOn(true)
+        setActive(true)
     }
 
     const handleClose = (event: MouseEvent<HTMLElement>) => {
         event.stopPropagation()
-        setMenuOn(false)
+        setActive(false)
     }
 
     return (
         <MenuWrapper onClick={handleClick}>
             {children}
-            {isMenuOn && (
-                <Portal>
-                    <NavWrapper>
-                        <CloseIconStyled
-                            onClick={(event) => handleClose(event)}
-                        >
-                            <CloseIcon />
-                        </CloseIconStyled>
-                        <NavMobileLink />
-                    </NavWrapper>
-                </Portal>
-            )}
+            <NavWrapper active={active.toString()}>
+                <CloseIconWrapper onClick={(event) => handleClose(event)}>
+                    <CloseIconStyled />
+                </CloseIconWrapper>
+                <NavMobileLink />
+            </NavWrapper>
         </MenuWrapper>
     )
 }

@@ -19,10 +19,8 @@ export const NavLinkMobileStyled = styled.a`
 
     @media ${device.mobile} {
         display: block;
-        height: 2rem;
         width: 8rem;
-        padding: 0 0 0.55em 0;
-        padding-bottom: 6px;
+        margin: 0 0 1.25rem 1.5rem;
         color: ${theme.colors.title};
         font-size: 1.125rem;
         font-weight: 700;

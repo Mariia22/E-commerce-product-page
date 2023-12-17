@@ -20,12 +20,14 @@ const SwiperWrapperStyled = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    bottom: 0;
     right: 0;
+    bottom: 0;
+    height: 120vh;
     z-index: 2;
     display: flex;
+    align-items: flex-start;
     justify-content: center;
-    align-items: center;
+    padding-top: 2.56rem;
     background-color: ${theme.colors.overlayColor};
 `
 
