@@ -38,7 +38,7 @@ body {
 }
 
 #root {
-  max-width: 1100px;
+  max-width: 1110px;
   width: 100vw;
   overflow: hidden;
     @media ${device.mobile} { 

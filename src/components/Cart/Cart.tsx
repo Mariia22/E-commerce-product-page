@@ -69,12 +69,7 @@ export const Cart: React.FC<CartProps> = ({
             onMouseLeave={handleMouseLeave}
         >
             <CartTitle>Cart</CartTitle>
-            <Flex
-                direction="column"
-                align="center"
-                justify="center"
-                margin="24px 0 0 0"
-            >
+            <Flex direction="column" align="center" justify="center">
                 {productsInCart[0].number > 0 ? (
                     <CartDescription>
                         {productsInCart.map((item) => (

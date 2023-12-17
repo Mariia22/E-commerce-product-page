@@ -31,6 +31,11 @@ const CounterValueStyled = styled.p`
     color: ${theme.colors.title};
 `
 const IconWrapper = styled.div`
+    display: flex;
+    width: 30%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
     color: ${theme.colors.primary};
 
     &:hover {

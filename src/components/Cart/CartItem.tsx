@@ -22,13 +22,22 @@ export const ImageStyled = styled.div<Partial<CartItemProps>>`
     border-radius: 4px;
 `
 
+const IconWrapper = styled.div`
+    display: flex;
+    width: 10%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+`
+
 const DeleteIconStyled = styled(DeleteIcon)`
     fill: ${theme.colors.iconDeleteColor};
     width: 14px;
     height: 16px;
-    &:hover {
-        cursor: pointer;
-    }
 `
 
 const BoldTextStyled = styled.p`
@@ -51,12 +60,7 @@ export const CartItem: React.FC<CartItemProps> = ({
     }
 
     return (
-        <Flex
-            width="100%"
-            justify="space-evenly"
-            align="center"
-            margin="0 0 1.5rem 0"
-        >
+        <Flex justify="space-evenly" align="center" margin="1.5rem">
             <ImageStyled image={image} />
             <Flex direction="column">
                 <p>{name}</p>
@@ -66,9 +70,9 @@ export const CartItem: React.FC<CartItemProps> = ({
                     <BoldTextStyled>${price * number}</BoldTextStyled>
                 </Flex>
             </Flex>
-            <div onClick={handleClick} onTouchEnd={handleClick}>
+            <IconWrapper onClick={handleClick} onTouchEnd={handleClick}>
                 <DeleteIconStyled />
-            </div>
+            </IconWrapper>
         </Flex>
     )
 }
