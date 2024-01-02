@@ -15,4 +15,4 @@ Technologies:
 
 Design - [https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6/hub](https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6/hub)
 
-Live version - [https://mariia22.github.io/todo-react/](https://mariia22.github.io/E-commerce-product-page/)
+Live version - [https://mariia22.github.io/E-commerce-product-page/](https://mariia22.github.io/E-commerce-product-page/)
